@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+
+
+
+@theme {
+  --color-ivory: #FAFAF8;
+  --color-linen: #F4EDE3;
+  --color-parchment: #EAE0D4;
+  --color-dust: #9B7575;
+  --color-dust-mid: #C4A0A0;
+  --color-dust-light: #F5EDEC;
+  --color-dust-dark: #7A5B5B;
+  --color-ink: #1C1917;
+  --color-ink-muted: #78716C;
+  --color-border: #DDD5CA;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAFAF8;
+  color: #1C1917;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.7s ease both;
+}
+
+.animate-fade-up-delay-1 { animation: fadeInUp 0.7s ease 0.15s both; }
+.animate-fade-up-delay-2 { animation: fadeInUp 0.7s ease 0.30s both; }
+.animate-fade-up-delay-3 { animation: fadeInUp 0.7s ease 0.45s both; }
