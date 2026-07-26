@@ -7,6 +7,7 @@ import {
   FaPhone,
   FaCheck
 } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -15,18 +16,48 @@ function Contact() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  {/*const handleSubmit = (e) => {
     e.preventDefault();
     const subject = `Portfolio Contact from ${form.name}`;
     const body = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
     window.location.href = `mailto:jarifatasnim13@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
-  };
+  };*/}
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(import.meta.env.VITE_EMAILJS_SERVICE_ID);
+  console.log(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+  console.log(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+ emailjs.send(
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  {
+    from_name: form.name,
+    from_email: form.email,
+    message: form.message,
+  },
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  )
+    .then(() => {
+      setSent(true);
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Failed to send message.");
+    });
+};
 
   return (
     <section id="contact" className="bg-[#f6fafd] py-20">
       <div className="max-w-6xl mx-auto px-8">
-        {/* Header */}
+      
         <div className="max-w-3xl mx-auto text-center mb-14">
           <span className="inline-block text-sm font-semibold uppercase tracking-[0.25em] text-[#1a3d63] mb-4">
             Get In Touch
@@ -40,7 +71,7 @@ function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 bg-[#f6fafd] rounded-lg border border-sky-200 shadow-md p-8 lg:p-14">
-          {/* Left — contact info */}
+          {/* Leftside*/}
           <div className="lg:col-span-2 flex flex-col justify-between gap-8">
             <div className="space-y-10" >
               <ContactRow icon={<FaMapMarkerAlt size={20} className="" />} label="Location" value="Dhaka, Bangladesh" />
@@ -56,7 +87,7 @@ function Contact() {
            
           </div>
 
-          {/* Right — form */}
+          {/* Rightside*/}
           <div className="lg:col-span-3">
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10">
