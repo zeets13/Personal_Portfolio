@@ -8,7 +8,7 @@ import {
   FaCheck
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
-
+import { motion } from "framer-motion";
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -53,7 +53,12 @@ function Contact() {
 };
 
   return (
-    <section id="contact" className="bg-[#f6fafd] py-20">
+    <motion.section id="contact" 
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.1 }}
+    transition={{ duration: 0.6 }}
+    className="bg-[#f6fafd] py-20">
       <div className="max-w-6xl mx-auto px-8">
       
         <div className="max-w-3xl mx-auto text-center mb-14">
@@ -149,7 +154,7 @@ function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

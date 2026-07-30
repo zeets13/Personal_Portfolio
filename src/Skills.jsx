@@ -78,18 +78,8 @@ function Skills() {
 export default Skills;*/}
 
 
-import {
-  FaReact,
-  FaPython,
-  FaGitAlt,
-  FaGithub,
-  FaDocker,
-  FaHtml5,
-  FaCss3Alt,
-  FaChartBar,
-  
-} from "react-icons/fa";
-
+import {FaReact,FaPython,FaGitAlt,FaGithub,FaDocker,FaHtml5,FaCss3Alt,FaChartBar,} from "react-icons/fa";
+import { motion } from "framer-motion";
 import {
   SiJavascript,
   SiTailwindcss,
@@ -121,7 +111,11 @@ const skills = [
 function Skills(){
   return (
 
-    <section id="skills" className="py-20 bg-[#f6fafd]">
+    <motion.section id="skills"
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.1 }}
+    transition={{ duration: 0.6 }} className="py-20 bg-[#f6fafd]">
 
     <div className="max-w-6xl mx-auto px-8">
 
@@ -163,7 +157,7 @@ function Skills(){
 
     </div>
 
-</section>
+</motion.section>
   );
 }
 export default Skills;

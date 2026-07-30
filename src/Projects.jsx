@@ -1,5 +1,5 @@
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 const projectData = [
   {
     title: "Cloud-Vote",
@@ -62,7 +62,11 @@ const projectData = [
 
 function Projects() {
   return (
-    <section id="projects" className="bg-[#f6fafd] py-20">
+    <motion.section id="projects"
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.1 }}
+    transition={{ duration: 0.6 }} className="bg-[#f6fafd] py-20">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -123,7 +127,7 @@ function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

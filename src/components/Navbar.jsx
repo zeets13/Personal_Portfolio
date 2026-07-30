@@ -13,7 +13,7 @@ function Navbar() {
   const navLinks = ["home", "about", "skills", "projects"];
 
   return (
-    <nav className="w-full bg-[#f6fafd] py-5 relative z-50">
+   <nav className="fixed top-0 border border-sky-200 left-0 w-full bg-[#f6fafd] py-5 z-50">
       <div className="flex items-center justify-between max-w-6xl mx-auto px-6">
         {/* Name */}
         <div className="text-lg font-bold text-slate-700">

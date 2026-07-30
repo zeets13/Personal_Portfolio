@@ -1,5 +1,5 @@
 import { FaTrophy, FaCertificate } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 const achievements = [
   {
     title: "Finalist, Case Competition",
@@ -33,7 +33,11 @@ const certifications = [
 
 function Certifications() {
   return (
-    <section id="certifications" className="py-20 bg-[#f6fafd]">
+    <motion.section id="certifications" 
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.1 }}
+    transition={{ duration: 0.6 }}className="py-20 bg-[#f6fafd]">
       <div className="max-w-6xl mx-auto px-8">
 
         {/* Heading */}
@@ -118,7 +122,7 @@ function Certifications() {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
