@@ -20,25 +20,7 @@ const projectData = [
     github: "https://github.com/zeets13/NLP_Project",
     
   },
-  {
-    title: "Campus-Jatra",
-    subtitle: "University Transport Tracking System",
-    description:
-      "A real-time vehicle tracking mobile application for Jagannath University transport services with a precise live location tracking module.",
-    tech: ["Flutter", "Dart", "GPS Module"],
-    github: "#",
-    
-  },
-  {
-    title: "Home-Scope",
-    subtitle: "Real Estate Website",
-    description:
-      "A full-featured real estate platform where users can buy, sell, or rent properties, complete with image and video listings for each property and a chatbot agent for real-time assistance.",
-    tech: ["HTML", "CSS", "JavaScript", "PHP"],
-    github: "#",
   
- 
-  },
   {
     title: "Heart Disease Risk Prediction System",
     subtitle: "Machine Learning Model with Interactive Interface",
@@ -49,15 +31,7 @@ const projectData = [
     
    
   },
-  {
-    title: "Bank Risk & Fraud Analysis",
-    subtitle: "End-to-End Data Analytics Solution",
-    description:
-      "Cleaned and transformed a 20k+ record banking dataset, engineered features, performed relational SQL analysis, and built Power BI dashboards to provide insights on loan performance and fraud.",
-    tech: ["Python", "PostgreSQL", "Power BI"],
-    github: "https://github.com/zeets13/Bank-Risk-And-Fraud-Analysis",
-   
-  },
+  
 ];
 
 function Projects() {

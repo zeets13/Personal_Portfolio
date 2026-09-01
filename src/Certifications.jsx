@@ -13,7 +13,7 @@ const achievements = [
   },
   {
     title: "Winner, Idea Pitch",
-    subtitle: "WIE Day Celebration",
+    subtitle: "WIE Day, IEEE Bangladesh Section",
     year: "2024",
   },
 ];
@@ -26,7 +26,7 @@ const certifications = [
   },
   {
     title: "Software Testing & Training Program",
-    subtitle: "EDGE Program",
+    subtitle: "Bangladesh Computer Council (BCC)",
     year: "2025",
   },
 ];

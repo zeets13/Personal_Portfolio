@@ -47,14 +47,14 @@ function App() {
 />
 
       <p className="mt-8 text-lg text-gray-700 ">
-        Final-year Computer Science student passionate about
-        building user-focused web applications, data analytics,
-        software testing and solving real-world problems.
+        Passionate about
+        building web applications,
+        testing applications and solving real-world problems.
       </p>
 
       <div className="mt-14">
   <a
-    href="/Jarifa_Tasnim_Resume.pdf"
+    href="/Jarifa_Tasnim_CV.pdf"
     download
     className="
       inline-flex
