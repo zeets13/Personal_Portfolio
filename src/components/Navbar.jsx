@@ -40,6 +40,7 @@ function Navbar() {
             href="https://www.linkedin.com/in/jarifa-tasnim"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
             className="hover:text-slate-700 transition-colors duration-200"
           >
             <FaLinkedin size={20} />
@@ -48,12 +49,14 @@ function Navbar() {
             href="https://github.com/zeets13"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Github"
             className="hover:text-slate-700 transition-colors duration-200"
           >
             <FaGithub size={20} />
           </a>
           <a
             href="mailto:jarifatasnim13@gmail.com"
+            aria-label="Email"
             className="hover:text-slate-700 transition-colors duration-200"
           >
             <FaEnvelope size={20} />
