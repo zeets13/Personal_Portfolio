@@ -7,7 +7,7 @@ const projectData = [
     description:
       "A modern, responsive web-based voting system with full DevOps integration — Docker containerization, automated CI/CD pipelines and dynamic autoscaling.",
     tech: ["React", "ASP.NET", "Docker", "CI/CD"],
-    github: "#",
+    github: "https://github.com/Imran16731/VotingSystem",
     
   
   },
