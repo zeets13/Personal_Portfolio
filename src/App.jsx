@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Certifications from "./Certifications";
+import QaLab from "./components/QaLab";
 import Contact from "./Contact";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
@@ -132,6 +133,8 @@ function App() {
       <Skills />
 
       <Projects />
+      <QaLab />
+      
 
       <Certifications />
 
