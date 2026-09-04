@@ -10,10 +10,10 @@ const testGroups = [
   { name: "Responsive layout", count: 8 },
 ];
 
-const totalTests = testGroups.reduce(
+{/*const totalTests = testGroups.reduce(
   (total, group) => total + group.count,
   
-);
+);*/}
 
 const QaLab = () => {
   const [isRunning, setIsRunning] = useState(false);
@@ -89,7 +89,7 @@ const handleRunTests = async () => {
             {/* Tests */}
             <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center border-r border-slate-200 px-5 py-6">
               <span className="text-3xl font-semibold text-cyan-600">
-                {totalTests}
+                64
               </span>
 
               <span className="mt-1 text-[10px] font-medium tracking-widest text-slate-500">
