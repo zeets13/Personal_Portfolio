@@ -1,5 +1,5 @@
-import React from "react";
 
+import React, { useState } from "react";
 const testGroups = [
   { name: "Homepage smoke tests", count: 6 },
   { name: "Main navigation", count: 10 },
@@ -12,10 +12,37 @@ const testGroups = [
 
 const totalTests = testGroups.reduce(
   (total, group) => total + group.count,
-  0
+  
 );
 
 const QaLab = () => {
+  const [isRunning, setIsRunning] = useState(false);
+const [status, setStatus] = useState("Waiting for test run...");
+const handleRunTests = async () => {
+  try {
+    setIsRunning(true);
+    setStatus("Triggering GitHub Actions workflow...");
+
+    const response = await fetch("/api/run-tests", {
+      method: "POST",
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to start test suite");
+    }
+
+    setStatus("QA suite started successfully!");
+
+  } catch (error) {
+    console.error(error);
+
+    setStatus("Failed to start the QA suite.");
+  } finally {
+    setIsRunning(false);
+  }
+};
   return (
     <section
       id="qa-lab"
@@ -150,7 +177,7 @@ const QaLab = () => {
             <div className="flex-1 px-7 py-8 font-mono text-[13px] leading-6">
 
               <p className="text-blue-400">
-                &gt; Waiting for test run...
+                  &gt; {status}
               </p>
 
               <p className="mt-3 text-slate-300">
@@ -167,13 +194,16 @@ const QaLab = () => {
             <div className="flex flex-col gap-3 border-t border-[#263535] px-5 py-3 sm:flex-row sm:items-center">
 
               <button
-                type="button"
-                className="rounded-full bg-[#5E88C3] px-5 py-2 text-[11px] font-bold tracking-wide 
-                text-[#0d1717] transition hover:bg-[#80A0CB]"
-              >
-                RUN TESTS
-              </button>
-
+              type="button"
+              onClick={handleRunTests}
+              disabled={isRunning}
+              className="rounded-full bg-cyan-400 px-5 py-2 
+              text-[9px] font-bold tracking-wide text-[#0d1717] 
+              transition hover:bg-cyan-300 disabled:cursor-not-allowed
+               disabled:opacity-60"
+            >
+              {isRunning ? "STARTING..." : "RUN QA SUITE"}
+            </button>
 
             </div>
           </div>
