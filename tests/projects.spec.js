@@ -42,7 +42,7 @@ test('TC-020 - GitHub links have correct URLs2', async ({ page }) => {
 
   const githubLinks = page.getByRole('link', {name: 'View Project on GitHub'});
 
-  await expect(githubLinks.nth(0)).toHaveAttribute('href',/github\.com/); 
+  await expect(githubLinks.nth(0)).toHaveAttribute('href','https://github.com/Imran16731/VotingSystem'); 
 
  
 });
