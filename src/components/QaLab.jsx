@@ -23,7 +23,7 @@ const handleRunTests = async () => {
     setIsRunning(true);
     setStatus("Triggering GitHub Actions workflow...");
 
-    const response = await fetch("/api/run-tests", {
+    const response = await fetch("/api/run_test", {
       method: "POST",
     });
 
