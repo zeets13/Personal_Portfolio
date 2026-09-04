@@ -22,7 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+.vercel
+.vercel/*
 .env
 .env.*
 !.env.example
@@ -33,3 +34,5 @@ dist-ssr
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+.vercel
+.env*

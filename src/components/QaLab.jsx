@@ -16,12 +16,19 @@ const testGroups = [
 );*/}
 
 const QaLab = () => {
-  const [isRunning, setIsRunning] = useState(false);
+const [logs, setLogs] = useState([
+  "Waiting for test run...",
+]);
+const [isRunning, setIsRunning] = useState(false);
 const [status, setStatus] = useState("Waiting for test run...");
 const handleRunTests = async () => {
   try {
     setIsRunning(true);
-    setStatus("Triggering GitHub Actions workflow...");
+
+    setLogs([
+      "QA suite triggered successfully",
+      "Waiting for GitHub runner...",
+    ]);
 
     const response = await fetch("/api/run_test", {
       method: "POST",
@@ -33,15 +40,23 @@ const handleRunTests = async () => {
       throw new Error(data.message || "Failed to start test suite");
     }
 
-    setStatus("QA suite started successfully!");
+    setLogs([
+      "QA suite triggered successfully",
+      "Waiting for GitHub runner...",
+      "GitHub Actions workflow started",
+    ]);
 
   } catch (error) {
     console.error(error);
 
-    setStatus("Failed to start the QA suite.");
+    setLogs([
+      "Failed to start the QA suite.",
+    ]);
+
   } finally {
     setIsRunning(false);
   }
+
 };
   return (
     <section
@@ -132,9 +147,7 @@ const handleRunTests = async () => {
               <div
                 key={group.name}
                 className="flex items-center gap-3 border-b border-slate-200 px-3 py-4 last:border-b-0"
-              >
-
-                
+              > 
 
                 {/* Name */}
                 <span className="flex-1 text-sm font-medium text-slate-800">
@@ -176,19 +189,20 @@ const handleRunTests = async () => {
             {/* Terminal */}
             <div className="flex-1 px-7 py-8 font-mono text-[13px] leading-6">
 
-              <p className="text-blue-400">
-                  &gt; {status}
-              </p>
+          {logs.map((log, index) => (
+            <p
+              key={index}
+              className={
+                index === logs.length - 1
+                  ? "text-cyan-400"
+                  : "text-slate-300"
+              }
+            >
+              &gt; {log}
+            </p>
+          ))}
 
-              <p className="mt-3 text-slate-300">
-                The live runner will execute the real Playwright suite here.
-              </p>
-
-              <p className="text-slate-300">
-                Watch test steps and browser activity in real time.
-              </p>
-
-            </div>
+        </div>
 
             {/* Runner footer */}
             <div className="flex flex-col gap-3 border-t border-[#263535] px-5 py-3 sm:flex-row sm:items-center">
