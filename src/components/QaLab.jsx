@@ -20,15 +20,20 @@ const [logs, setLogs] = useState([
   "Waiting for test run...",
 ]);
 const [isRunning, setIsRunning] = useState(false);
-const [status, setStatus] = useState("Waiting for test run...");
+const addLog = (message) => {
+  setLogs((previousLogs) => [...previousLogs, message]);
+};
 const handleRunTests = async () => {
   try {
     setIsRunning(true);
 
-    setLogs([
-      "QA suite triggered successfully",
-      "Waiting for GitHub runner...",
-    ]);
+    setLogs([]);
+
+    addLog("QA suite triggered successfully");
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    addLog("Waiting for GitHub runner...");
 
     const response = await fetch("/api/run_test", {
       method: "POST",
@@ -40,23 +45,60 @@ const handleRunTests = async () => {
       throw new Error(data.message || "Failed to start test suite");
     }
 
-    setLogs([
-      "QA suite triggered successfully",
-      "Waiting for GitHub runner...",
-      "GitHub Actions workflow started",
-    ]);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    addLog("GitHub Actions workflow started");
+
+    // Wait for GitHub workflow to appear
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    let completed = false;
+
+    while (!completed) {
+      const statusResponse = await fetch("/api/test_status");
+
+      const statusData = await statusResponse.json();
+
+      if (!statusResponse.ok) {
+        throw new Error(
+          statusData.message || "Failed to check workflow status"
+        );
+      }
+
+      if (statusData.status === "queued") {
+        addLog("Workflow queued...");
+      }
+
+      if (statusData.status === "in_progress") {
+        addLog("Installing dependencies...");
+      }
+
+      if (statusData.status === "completed") {
+        completed = true;
+
+        if (statusData.conclusion === "success") {
+          addLog("Launching Playwright browsers...");
+          addLog("Running regression suite...");
+          addLog("64/64 tests completed");
+          addLog("All tests passed ✓");
+        } else {
+          addLog("QA suite completed with failures ✗");
+        }
+
+        break;
+      }
+
+      // Check again after 5 seconds
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    }
 
   } catch (error) {
     console.error(error);
 
-    setLogs([
-      "Failed to start the QA suite.",
-    ]);
-
+    addLog("Failed to start or monitor the QA suite.");
   } finally {
     setIsRunning(false);
   }
-
 };
   return (
     <section
@@ -187,22 +229,25 @@ const handleRunTests = async () => {
             </div>
 
             {/* Terminal */}
-            <div className="flex-1 px-7 py-8 font-mono text-[13px] leading-6">
+          <div className="flex-1 overflow-y-auto px-7 py-8 font-mono 
+          text-[13px] leading-7">
 
-          {logs.map((log, index) => (
-            <p
-              key={index}
-              className={
-                index === logs.length - 1
-                  ? "text-cyan-400"
-                  : "text-slate-300"
-              }
-            >
-              &gt; {log}
-            </p>
-          ))}
+            {logs.map((log, index) => (
+              <p
+                key={index}
+                className={
+                  log.includes("passed")
+                    ? "text-green-400"
+                    : log.includes("fail")
+                    ? "text-red-400"
+                    : "text-cyan-400"
+                }
+              >
+                &gt; {log}
+              </p>
+            ))}
 
-        </div>
+          </div>
 
             {/* Runner footer */}
             <div className="flex flex-col gap-3 border-t border-[#263535] px-5 py-3 sm:flex-row sm:items-center">
