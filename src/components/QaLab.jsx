@@ -53,6 +53,8 @@ const handleRunTests = async () => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
     let completed = false;
+  
+    let lastWorkflowStatus = "";
 
     while (!completed) {
       const statusResponse = await fetch("/api/test_status");
@@ -64,33 +66,37 @@ const handleRunTests = async () => {
           statusData.message || "Failed to check workflow status"
         );
       }
+  // Only add a log when the status changes
+  if (statusData.status !== lastWorkflowStatus) {
+    
+    lastWorkflowStatus = statusData.status;
 
-      if (statusData.status === "queued") {
-        addLog("Workflow queued...");
-      }
-
-      if (statusData.status === "in_progress") {
-        addLog("Installing dependencies...");
-      }
-
-      if (statusData.status === "completed") {
-        completed = true;
-
-        if (statusData.conclusion === "success") {
-          addLog("Launching Playwright browsers...");
-          addLog("Running regression suite...");
-          addLog("64/64 tests completed");
-          addLog("All tests passed ✓");
-        } else {
-          addLog("QA suite completed with failures ✗");
-        }
-
-        break;
-      }
-
-      // Check again after 5 seconds
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+    if (statusData.status === "queued") {
+      addLog("Workflow queued...");
     }
+
+    if (statusData.status === "in_progress") {
+      addLog("Github Actions Workflow Running...");
+      
+    }
+  }
+
+  if (statusData.status === "completed") {
+    completed = true;
+
+    if (statusData.conclusion === "success") {
+      addLog("64/64 tests completed");
+      addLog("All tests passed ✓");
+    } else {
+      addLog("QA suite completed with failures ✗");
+    }
+
+    break;
+  }
+
+  // Check again after 5 seconds
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+}
 
   } catch (error) {
     console.error(error);
