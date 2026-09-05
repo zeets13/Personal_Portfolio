@@ -202,15 +202,16 @@ const handleRunTests = async () => {
                   {group.name}
                 </span>
 
-                {/* Count */}
+                {/* Count 
                 <span className="text-[12px] text-slate-600">
                   {String(group.count).padStart(2, "0")} tests
                 </span>
 
-                {/* Arrow */}
+                
                 <span className="text-md text-cyan-600">
                   ⌄
                 </span>
+                */}
 
               </div>
             ))}
