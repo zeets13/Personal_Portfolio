@@ -36,16 +36,14 @@ const projectData = [
 
 function Projects() {
   return (
-    <motion.section id="projects"
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.1 }}
-    transition={{ duration: 0.6 }} className="bg-[#f6fafd] py-20">
+    <section id="projects"
+     className="bg-[#F2EFE7] py-20">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-20">
           
-          <h2 className="text-5xl font-bold mt-4 mb-5 text-[#4a7fa7]">Projects I have Worked on</h2>
+          <h2 className="text-5xl font-bold mt-4 mb-5 text-[#432f2e]">
+            Projects I have Worked on</h2>
         </div>
 
         {/* Grid */}
@@ -53,11 +51,13 @@ function Projects() {
           {projectData.map((project) => (
             <div
               key={project.title}
-              className="bg-white rounded-2xl border border-blue-300 p-7 flex flex-col hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
+              className="bg-[#f4efe7] rounded-2xl border border-[#432f2e] p-7 flex flex-col 
+              hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="text-lg font-bold text-[#768fb2]  group-hover:text-[#2f4a81] transition-colors duration-200">
+                  <h3 className="text-lg font-bold text-[#432f2e]
+                  duration-200">
                     {project.title}
                   </h3>
                   <p className="text-xs text-dust font-medium mt-0.5">
@@ -75,7 +75,7 @@ function Projects() {
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="bg-[#c4d9e9] text-black/80 px-3 py-1 rounded-full text-xs font-medium"
+                    className="bg-[#432f2e] text-white px-3 py-1 rounded-full text-xs font-medium"
                   >
                     {t}
                   </span>
@@ -83,13 +83,14 @@ function Projects() {
               </div>
 
               {(project.github) && (
-                <div className="flex border-t border-border pt-4 justify-center ">
+                <div className="flex border-t  border-[#432f2e] pt-4 justify-center ">
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-center text-ink/80 hover:text-ink transition-colors font-medium"
+                      className="flex items-center gap-2 text-sm text-center 
+                      text-ink/80 hover:text-ink transition-colors font-medium"
                     >
                       <FaGithub size={20} /> View Project on GitHub
                     </a>
@@ -101,7 +102,7 @@ function Projects() {
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 

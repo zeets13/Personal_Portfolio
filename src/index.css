@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  background-color: #FAFAF8;
+
   color: #1C1917;
 }
 
@@ -38,3 +38,12 @@ body {
 .animate-fade-up-delay-1 { animation: fadeInUp 0.7s ease 0.15s both; }
 .animate-fade-up-delay-2 { animation: fadeInUp 0.7s ease 0.30s both; }
 .animate-fade-up-delay-3 { animation: fadeInUp 0.7s ease 0.45s both; }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

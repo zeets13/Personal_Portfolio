@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const testGroups = [
   { name: "Homepage smoke tests", count: 6 },
   { name: "Main navigation", count: 10 },
-  { name: "About section", count: 6 },
+  { name: "Contact section", count: 6 },
   { name: "Skills section", count: 5 },
   { name: "Projects", count: 9 },
   { name: "External links", count: 6 },
@@ -109,15 +109,12 @@ const handleRunTests = async () => {
   return (
     <section
       id="qa-lab"
-      className="bg-ink px-6 py-24 text-white md:px-12 lg:px-20"
+      className="bg-[#432f2e] px-6 py-24 text-white md:px-12 lg:px-20"
     >
-      {/* ================= HEADER ================= */}
       <div className="mx-auto max-w-6xl">
 
-       
-
-        {/* Main heading */}
-        <h2 className="max-w-4xl text-xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+        <h2 className="max-w-4xl text-xl font-bold 
+        leading-tight tracking-tight sm:text-5xl md:text-6xl">
           This portfolio can test itself.
         </h2>
 
@@ -126,13 +123,13 @@ const handleRunTests = async () => {
         </p>
       </div>
 
-      {/* ================= QA PANEL ================= */}
-      <div className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl bg-[#f8f8f7] text-slate-900 shadow-2xl">
+     
+      <div className="mx-auto mt-12 max-w-6xl overflow-hidden
+       rounded-2xl bg-[#f4efe7]  text-slate-900 shadow-2xl">
 
-        {/* ================= TOP AREA ================= */}
-        <div className="flex flex-col justify-between gap-10 border-b border-slate-200 p-7 md:flex-row md:items-center md:p-8">
+        <div className="flex flex-col justify-between gap-10 c
+        border-b border-[#432f2e]  p-7 md:flex-row md:items-center md:p-8">
 
-          {/* Description */}
           <div className="flex-1">
 
             <p className="text-[15px] font-bold tracking-[0.15em] text-[#717286]">
@@ -146,12 +143,13 @@ const handleRunTests = async () => {
 
           </div>
 
-          {/* ================= STATS ================= */}
-          <div className="flex w-full max-w-md border border-slate-200 md:w-auto">
+          
+          <div className="flex w-full max-w-md border border-[#432f2e] md:w-auto">
 
             {/* Tests */}
-            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center border-r border-slate-200 px-5 py-6">
-              <span className="text-3xl font-semibold text-cyan-600">
+            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center 
+             border-r border-[#432f2e] px-5 py-6">
+              <span className="text-3xl font-semibold text-[#432f2e]">
                 64
               </span>
 
@@ -161,8 +159,9 @@ const handleRunTests = async () => {
             </div>
 
             {/* Browsers */}
-            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center border-r border-slate-200 px-5 py-6">
-              <span className="text-3xl font-semibold text-cyan-600">
+            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center 
+            border-r border-[#432f2e] px-5 py-6">
+              <span className="text-3xl font-semibold text-[#432f2e]">
                 2
               </span>
 
@@ -172,8 +171,9 @@ const handleRunTests = async () => {
             </div>
 
             {/* Passing */}
-            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center px-5 py-6">
-              <span className="text-3xl font-semibold text-cyan-600">
+            <div className="flex min-w-[100px] flex-1 flex-col items-center 
+            border-r border-[#432f2e] justify-center px-5 py-6">
+              <span className="text-3xl font-semibold text-[#432f2e]">
                 100%
               </span>
 
@@ -185,16 +185,15 @@ const handleRunTests = async () => {
           </div>
         </div>
 
-        {/* ================= BODY ================= */}
         <div className="grid md:grid-cols-[42%_58%]">
 
-          {/* ================= TEST LIST ================= */}
-          <div className="bg-[#f8f8f7] p-4">
+          <div className="bg-[#f4efe7]  p-4">
 
             {testGroups.map((group) => (
               <div
                 key={group.name}
-                className="flex items-center gap-3 border-b border-slate-200 px-3 py-4 last:border-b-0"
+                className="flex items-center gap-3 border-b 
+                border-[#432f2e] px-3 py-4 last:border-b-0"
               > 
 
                 {/* Name */}
@@ -218,8 +217,7 @@ const handleRunTests = async () => {
 
           </div>
 
-          {/* ================= PLAYWRIGHT RUNNER ================= */}
-          <div className="flex min-h-[320px] flex-col bg-[#0d1717] text-slate-300">
+          <div className="flex min-h-[320px] flex-col bg-black/90 text-slate-300">
 
             {/* Runner header */}
             <div className="flex items-center justify-between border-b border-[#263535] px-5 py-3">
@@ -230,7 +228,7 @@ const handleRunTests = async () => {
               </span>
 
               <span className="text-[10px] text-slate-400">
-                Chromium  · Mobile Safari
+                Desktop Chrome  · Mobile Safari
               </span>
 
             </div>
@@ -247,7 +245,7 @@ const handleRunTests = async () => {
                     ? "text-green-400"
                     : log.includes("fail")
                     ? "text-red-400"
-                    : "text-cyan-400"
+                    : "text-[#f4efe7]"
                 }
               >
                 &gt; {log}
@@ -257,16 +255,17 @@ const handleRunTests = async () => {
           </div>
 
             {/* Runner footer */}
-            <div className="flex flex-col gap-3 border-t border-[#263535] px-5 py-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-3 border-t
+             border-[#263535] px-5 py-3 sm:flex-row sm:items-center">
 
               <button
               type="button"
               onClick={handleRunTests}
               disabled={isRunning}
-              className="rounded-full bg-cyan-400 px-5 py-2 
-              text-[9px] font-bold tracking-wide text-[#0d1717] 
-              transition hover:bg-cyan-300 disabled:cursor-not-allowed
-               disabled:opacity-60"
+              className="rounded-full bg-[#feefb8] px-5 py-2 
+              text-[10px] font-bold text-[#432f2e]   
+              cursor-pointer transition hover:bg-[#432f2e] hover:text-[#feefb8] 
+              "
             >
               {isRunning ? "STARTING..." : "RUN QA SUITE"}
             </button>
@@ -276,13 +275,13 @@ const handleRunTests = async () => {
 
         </div>
 
-        <div className="flex w-full border-t border-slate-200 
+        <div className="flex w-full border-t border-[#432f2e]
         px-5 py-4 text-[13px] sm:flex-row sm:items-center sm:justify-end">
       <a
         href="https://github.com/zeets13/Personal_portfolio"
         target="_blank"
         rel="noopener noreferrer"
-        className="font-semibold text-[#39639F] transition hover:text-[#62A3FF]"
+        className="font-semibold text-[#432f2e] transition "
       >
         View Playwright suite on GitHub
       </a>

@@ -1,128 +1,142 @@
-import { FaTrophy, FaCertificate } from "react-icons/fa";
-import { motion } from "framer-motion";
-const achievements = [
-  {
-    title: "Finalist, Case Competition",
-    subtitle: "Techathon Nationals & Rover Summit",
-    year: "2026",
-  },
-  {
-    title: "Finalist, 3 Minute Thesis",
-    subtitle: "Sciblitz 2.0",
-    year: "2026",
-  },
-  {
-    title: "Winner, Idea Pitch",
-    subtitle: "WIE Day, IEEE Bangladesh Section",
-    year: "2024",
-  },
-];
-
-const certifications = [
-  {
-    title: "Business Analytics with Power BI",
-    subtitle: "Unbolt Academy",
-    year: "2026",
-  },
-  {
-    title: "Software Testing & Training Program",
-    subtitle: "Bangladesh Computer Council (BCC)",
-    year: "2025",
-  },
-];
+import React, { useState } from "react";
+import {
+  BsChevronCompactLeft,
+  BsChevronCompactRight,
+} from "react-icons/bs";
+import { RxDotFilled } from "react-icons/rx";
 
 function Certifications() {
+  const slides = [
+    {
+      url: "/sqa.jpg",
+    },
+    {
+      url: "/ba.jpg",
+    },
+    {
+      url: "/wie.jpg",
+    },
+    {
+      url: "/3mt.jpg",
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+
+    setCurrentIndex(
+      isFirstSlide ? slides.length - 1 : currentIndex - 1
+    );
+  };
+
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === slides.length - 1;
+
+    setCurrentIndex(
+      isLastSlide ? 0 : currentIndex + 1
+    );
+  };
+
   return (
-    <motion.section id="certifications" 
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.1 }}
-    transition={{ duration: 0.6 }}className="py-20 bg-[#f6fafd]">
-      <div className="max-w-6xl mx-auto px-8">
+    <section
+      id="certifications"
+      className="bg-[#F2EFE7] py-20"
+    >
+      <div className="mx-auto max-w-6xl px-6 sm:px-8">
 
         {/* Heading */}
-        <div className="text-center mb-20">
-          
-          <h2 className="text-5xl font-bold mt-4 text-[#4a7fa7]">
-            Milestones & Growth
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold text-[#432f2e] sm:text-5xl">
+            Certifications
           </h2>
-        
         </div>
 
-        {/* Content */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Carousel */}
+        <div className="group relative mx-auto h-[500px] w-full max-w-4xl sm:h-[600px]">
 
-          {/* Achievements */}
-          <div>
-            <div className="flex items-center gap-5 mb-6">
-              <span className="flex items-center text-[#2b558a]">
-                <FaTrophy size={25}/>
-              </span>
-              <h3 className="font-bold text-lg text-gray-800 tracking-wide">
-                Achievements
-              </h3>
-            </div>
+          {/* Certificate Image */}
+          <div
+            style={{
+              backgroundImage: `url(${slides[currentIndex].url})`,
+            }}
+            className="
+              h-full
+              w-full
+              rounded-2xl
+              bg-contain
+            
+              bg-center
+              bg-no-repeat
+              duration-500
+            "
+          />
 
-            <div className="space-y-5">
-              {achievements.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-start justify-between gap-4 rounded-2xl bg-[#E8F1F5]/50 px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-300"
-                >
-                  <div>
-                    <h4 className="font-semibold text-gray-800">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {item.subtitle}
-                    </p>
-                  </div>
+          {/* Left Arrow */}
+          <button
+            onClick={prevSlide}
+            aria-label="Previous certificate"
+            className="
+              absolute
+              left-3
+              top-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-[#432f2e]/80
+              p-3
+              text-white
+              transition
+              hover:bg-[#432f2e]
+            "
+          >
+            <BsChevronCompactLeft size={28} />
+          </button>
 
-                  <span className="shrink-0 text-xs font-medium text-blue-500 bg-white rounded-full px-3 py-1">
-                    {item.year}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Certifications */}
-          <div>
-            <div className="flex items-center gap-5 mb-6">
-              <span className="flex items-center  text-[#2b558a]">
-                <FaCertificate size={25}/>
-              </span>
-              <h3 className="font-bold text-lg text-gray-800 tracking-wide">
-                Certifications
-              </h3>
-            </div>
-
-            <div className="space-y-5">
-              {certifications.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-start justify-between gap-4 rounded-2xl bg-[#E8F1F5]/50 px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-300"
-                >
-                  <div>
-                    <h4 className="font-semibold text-gray-800">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {item.subtitle}
-                    </p>
-                  </div>
-
-                  <span className="shrink-0 text-xs font-medium text-blue-500 bg-white rounded-full px-3 py-1">
-                    {item.year}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Right Arrow */}
+          <button
+            onClick={nextSlide}
+            aria-label="Next certificate"
+            className="
+              absolute
+              right-3
+              top-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-[#432f2e]/80
+              p-3
+              text-white
+              transition
+              hover:bg-[#432f2e]
+            "
+          >
+            <BsChevronCompactRight size={28} />
+          </button>
 
         </div>
+
+        {/* Dots */}
+        <div className="mt-5 flex justify-center">
+
+          {slides.map((_, slideIndex) => (
+            <button
+              key={slideIndex}
+              onClick={() => setCurrentIndex(slideIndex)}
+              aria-label={`Go to certificate ${slideIndex + 1}`}
+              className={`text-2xl transition ${
+                currentIndex === slideIndex
+                  ? "text-[#432f2e]"
+                  : "text-[#432f2e]/30"
+              }`}
+            >
+              <RxDotFilled />
+            </button>
+          ))}
+
+        </div>
+
       </div>
-    </motion.section>
+    </section>
   );
 }
 

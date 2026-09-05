@@ -5,10 +5,11 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaPhone,
-  FaCheck
+  FaCheck,
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -16,190 +17,209 @@ function Contact() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
-  {/*const handleSubmit = (e) => {
-    e.preventDefault();
-    const subject = `Portfolio Contact from ${form.name}`;
-    const body = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
-    window.location.href = `mailto:jarifatasnim13@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
-  };*/}
   const handleSubmit = (e) => {
-  e.preventDefault();
-  
+    e.preventDefault();
 
- emailjs.send(
-  import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-  {
-    from_name: form.name,
-    from_email: form.email,
-    message: form.message,
-  },
-  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  )
-    .then(() => {
-      setSent(true);
-
-      setForm({
-        name: "",
-        email: "",
-        message: "",
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Failed to send message.");
       });
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("Failed to send message.");
-    });
-};
+  };
 
   return (
-    <motion.section id="contact" 
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.1 }}
-    transition={{ duration: 0.6 }}
-    className="bg-[#f6fafd] py-20">
-      <div className="max-w-6xl mx-auto px-8">
+    <section
+      id="contact"
       
-        <div className="max-w-3xl mx-auto text-center mb-14">
-          <span className="inline-block text-sm font-semibold uppercase tracking-[0.25em] text-[#1a3d63] mb-4">
-            Get In Touch
-          </span>
-          <h2 className="text-5xl font-bold text-[#4a7fa7] mb-5">
-            Let's Build Something Together.
-          </h2>
-          <p className="text-[#0a1931]/70 leading-8 text-md">
-            Have a project in mind? I'd love to hear about it. 
-          </p>
-        </div>
+      className="bg-[#F2EFE7] py-20"
+    >
+      <div className="max-w-6xl mx-auto px-8">
+        <div className="rounded-3xl bg-[#432f2e] p-8 lg:p-14">
+          <div className="flex flex-col lg:flex-row lg:items-start 
+          lg:justify-between gap-8 border-b border-[#feefb8]/15 pb-10 mb-10">
+            <div className="flex items-center gap-6">
+              <h2
+                className="text-5xl sm:text-6xl font-black uppercase
+                 tracking-tight text-[#feefb8] leading-none"
+                style={{ fontFamily: "'Arial Black', sans-serif" }}
+              >
+                Contact
+                <br />
+                Me
+              </h2>
+              <div className="hidden sm:block w-[2px] self-stretch bg-[#feefb8]/30" />
+              <p className="hidden sm:block max-w-[160px] text-sm 
+              text-[#feefb8]/70 leading-relaxed">
+                Reach Out To me For Any Queries.
+              </p>
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 bg-[#f6fafd] rounded-lg border border-sky-200 shadow-md p-8 lg:p-14">
-          {/* Leftside*/}
-          <div className="lg:col-span-2 flex flex-col justify-between gap-8">
-            <div className="space-y-10" >
-              <ContactRow icon={<FaMapMarkerAlt size={20} className="" />} label="Location" value="Dhaka, Bangladesh" />
-              <ContactRow
-                icon={<FaEnvelope size={20} />}
-                label="Email"
+            <div className="space-y-4">
+              <InfoRow
+                icon={<FaMapMarkerAlt size={16} />}
+                
+                value="Dhaka, Bangladesh"
+              />
+              <InfoRow
+                icon={<FaPhone size={16} />}
+               
+                value="+880 1984 284 806"
+              />
+              <InfoRow
+                icon={<FaEnvelope size={16} />}
+            
                 value="jarifatasnim13@gmail.com"
                 href="mailto:jarifatasnim13@gmail.com"
               />
-              <ContactRow icon={<FaPhone size={20} />} label="Phone" value="+880 1984 284 806" />
             </div>
-
-           
           </div>
 
-          {/* Rightside*/}
-          <div className="lg:col-span-3">
-            {sent ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-10">
-                <div className="w-14 h-14 rounded-full bg-blue-200 flex items-center justify-center mb-5">
-                  <FaCheck size={20} className="text-black/70" />
-                </div>
-                <h3 className="text-xl font-semibold text-ink">
-                  Your email has been sent!
-                </h3>
-                
-                <button
-                  onClick={() => setSent(false)}
-                  className="mt-5 text-sm text-gray-700 hover:underline cursor-pointer"
-                >
-                  Send another message
-                </button>
+          {/* ================= FORM ================= */}
+          {sent ? (
+            <div className="flex flex-col items-center justify-center text-center py-16">
+              <div className="w-14 h-14 rounded-full bg-[#feefb8] flex items-center justify-center mb-5">
+                <FaCheck size={20} className="text-[#432f2e]" />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <FormField
-                  id="name"
-                  label="Name"
-                  type="text"
-                  placeholder="Your full name"
-                  value={form.name}
-                  onChange={handleChange}
-                />
-                <FormField
-                  id="email"
-                  label="Email"
-                  type="email"
-                  placeholder="your@email.com"
-                  value={form.email}
-                  onChange={handleChange}
-                />
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs font-semibold uppercase tracking-[0.03em] text-[#0a1931] mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    required
-                    placeholder="Tell me about your project or idea…"
-                    value={form.message}
+              <h3 className="text-xl font-semibold text-[#feefb8]">
+                Your message has been sent!
+              </h3>
+              <button
+                onClick={() => setSent(false)}
+                className="mt-5 text-sm text-[#feefb8]/70 hover:text-[#feefb8] hover:underline cursor-pointer"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Left: stacked inputs */}
+                <div className="space-y-5">
+                  <BlockField
+                    id="name"
+                    placeholder="Your Name*"
+                    type="text"
+                    value={form.name}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-blue-300 bg-[#ffffff] px-5 py-3 text-sm text-ink placeholder-black/40 outline-none transition focus:border-[#4a7fa7] focus:ring-2 focus:ring-dust-light resize-none"
+                  />
+                  <BlockField
+                    id="email"
+                    placeholder="Your E-mail Address*"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full rounded-xl bg-[#4a7fa7] px-6 py-4 text-md font-semibold text-ivory shadow-sm transition-all cursor-pointer duration-300 hover:bg-[#1a3d63] hover:shadow-md hover:-translate-y-0.5 tracking-wide"
-                >
-                  Send Message →
-                </button>
-              </form>
-            )}
+
+                {/* Right: big message box */}
+                <textarea
+                  id="message"
+                  required
+                  placeholder="Type your message..."
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full h-full min-h-[168px] rounded-lg 
+                  border-2 border-[#feefb8]/30 bg-[#feefb8] px-5 py-4 
+                  text-sm text-[#432f2e] placeholder-[#432f2e]/50 outline-none transition focus:border-[#feefb8] resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="mt-6 inline-block rounded-lg
+                 bg-[#ffffff] px-8 py-3 text-sm font-bold 
+                 uppercase tracking-wider text-[#432f2e] 
+                 shadow-sm transition-all duration-300 
+                 hover:bg-[#feefb8] hover:-translate-y-0.5 cursor-pointer"
+              >
+                Send!
+              </button>
+            </form>
+          )}
+
+          {/* ================= SOCIAL ROW ================= */}
+          <div className="mt-14 pt-8 border-t border-[#feefb8]/15 flex items-center justify-center gap-4">
+            <SocialIcon
+              icon={<FaGithub size={16} />}
+              href="https://github.com/zeets13"
+              label="GitHub"
+            />
+            <SocialIcon
+              icon={<FaLinkedin size={16} />}
+              href="https://www.linkedin.com/in/jarifa-tasnim"
+              label="LinkedIn"
+            />
+            <SocialIcon
+              icon={<FaEnvelope size={16} />}
+              href="mailto:jarifatasnim13@gmail.com"
+              label="Email"
+            />
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
-function ContactRow({ icon, label, value, href }) {
+function InfoRow({ icon, label, value, href }) {
   return (
-    <div className="flex items-start gap-4">
-      <div className="w-9 h-9  flex items-center justify-center text-[#3d5a80] shrink-0 mt-0.5">
-        {icon}
-      </div>
-      <div>
-        <p className="text-md font-semibold  tracking-[.02em] text-[#0a1931]  mb-0.5">
-          {label}
-        </p>
-        {href ? (
-          <a href={href} className="text-sm text-ink/85 hover:text-[#1a3d63] transition-colors">
-            {value}
-          </a>
-        ) : (
-          <p className="text-sm text-ink/85">{value}</p>
-        )}
-      </div>
+    <div className="flex items-center gap-3 text-sm">
+      <span className="text-[#feefb8]">{icon}</span>
+      {href ? (
+        <a
+          href={href}
+          className="text-[#feefb8] hover:underline underline-offset-2"
+        >
+          {value}
+        </a>
+      ) : (
+        <span className="text-[#feefb8]">{value}</span>
+      )}
     </div>
   );
 }
 
-
-function FormField({ id, label, type, placeholder, value, onChange }) {
+function BlockField({ id, type, placeholder, value, onChange }) {
   return (
-    <div>
-      <label
-        htmlFor={id}
-        className="block text-xs font-semibold uppercase tracking-[0.03em] text-[#0a1931] mb-2"
-      >
-        {label}
-      </label>
-      <input
-        id={id}
-        type={type}
-        required
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className="w-full rounded-xl border border-blue-300 bg-white px-5 py-3 text-sm text-ink placeholder-black/40 outline-none transition focus:border-[#4a7fa7] focus:ring-2 focus:ring-dust-light"
-      />
-    </div>
+    <input
+      id={id}
+      type={type}
+      required
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      className="w-full rounded-lg border-2 border-[#feefb8]/30 
+      bg-[#feefb8] px-5 py-4 text-sm text-[#432f2e] 
+      placeholder-[#432f2e]/50 outline-none transition focus:border-[#feefb8]"
+    />
+  );
+}
+
+function SocialIcon({ icon, href, label }) {
+  return (
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#feefb8]/40 text-[#feefb8] transition-colors duration-300 hover:bg-[#feefb8] hover:text-[#432f2e]"
+    >
+      {icon}
+    </a>
   );
 }
 

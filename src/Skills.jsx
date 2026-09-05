@@ -1,163 +1,104 @@
-{/*import SkillCard from "./components/SkillCard";
-import { FaReact, FaPython, FaGitAlt, FaDatabase, FaCloud } from "react-icons/fa";
-import { SiFlutter } from "react-icons/si";
+import {
+  FaReact,
+  FaPython,
+  FaGitAlt,
+  FaGithub,
+  FaChartBar,
+} from "react-icons/fa";
 
-const skillData = [
+import {
+  SiJavascript,
+  SiTailwindcss,
+  SiPostgresql,
+  SiPostman,
+
+} from "react-icons/si";
+import playwrightLogo from "./assets/playwright.svg";
+const skills = [
+  { icon: <FaReact />, name: "React" },
+  { icon: <SiTailwindcss />, name: "Tailwind" },
+  { icon: <SiJavascript />, name: "JavaScript" },
+  
+  { icon: <SiPostman />, name: "Postman" },
   {
-    icon: <FaReact className="text-2xl text-dust" />,
-    title: "Frontend Development",
-    description:
-      "Building responsive, interactive web interfaces using modern frameworks and design systems.",
-    skills: ["React", "Tailwind CSS", "JavaScript", "HTML/CSS"],
-  },
-  {
-    icon: <SiFlutter className="text-2xl text-dust" />,
-    title: "Mobile Development",
-    description:
-      "Developing cross-platform mobile applications with modern tools and native performance.",
-    skills: ["Flutter", "Dart"],
-  },
-  {
-    icon: <FaDatabase className="text-2xl text-dust" />,
-    title: "Database Management",
-    description:
-      "Designing and optimizing relational and NoSQL databases for performance and scalability.",
-    skills: ["MySQL", "PostgreSQL", "Firebase", "SQLite"],
-  },
-  {
-    icon: <FaCloud className="text-2xl text-dust" />,
-    title: "Cloud & DevOps",
-    description:
-      "Deploying and managing applications using cloud infrastructure and automation pipelines.",
-    skills: ["Docker", "Kubernetes", "CI/CD"],
-  },
-  {
-    icon: <FaPython className="text-2xl text-dust" />,
-    title: "Data & Analytics",
-    description:
-      "Analyzing and visualizing datasets to surface actionable insights and business value.",
-    skills: ["Python", "SQL", "Power BI", "Machine Learning"],
-  },
-  {
-    icon: <FaGitAlt className="text-2xl text-dust" />,
-    title: "Tools & Technologies",
-    description:
-      "Leveraging industry-standard tools that streamline development, collaboration, and design.",
-    skills: ["Git", "GitHub", "Figma", "VS Code"],
-  },
+  icon: (
+    <img
+      src={playwrightLogo}
+      alt="Playwright"
+      className="h-10 w-10 text-[#feefb8]"
+    />
+  ),
+  name: "Playwright",
+},
+{ icon: <FaPython />, name: "Python" },
+  { icon: <SiPostgresql />, name: "PostgreSQL" },
+
+  { icon: <FaGitAlt />, name: "Git" },
+  { icon: <FaGithub />, name: "GitHub" },
+  
 ];
 
 function Skills() {
   return (
-    <section id="skills" className="bg-[#f6fafd] py-24">
-      <div className="max-w-7xl mx-auto px-8">
-        {/* Header */}{/*}
-        <div className="text-center mb-16">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.25em] text-dust mb-4">
-            What I Know
-          </span>
-          <h2 className="text-5xl font-bold text-ink">Skills</h2>
-        </div>
+    <section id="skills" className="bg-[#F2EFE7] py-20">
+   
+      <div className="mx-auto max-w-6xl px-8">
+        <div className="mb-20 text-center">
+          <h2 className="mb-5 mt-4 text-5xl font-bold text-[#432f2e]">
+            My Skills
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillData.map((item) => (
-            <SkillCard
-              key={item.title}
-              icon={item.icon}
-              title={item.title}
-              description={item.description}
-              skills={item.skills}
-            />
-          ))}
+          <p className="mt-5 text-[#0a1931]/70">
+            The tools and technologies I use to build applications.
+          </p>
+        </div>
+      </div>
+
+      <div className="relative w-full bg-[#432f2e]">
+        <div className="mx-auto max-w-7xl px-8 py-10 lg:overflow-visible">
+          {/* Skills */}
+          <div
+            className="
+              grid
+              grid-cols-3
+              sm:grid-cols-5
+              gap-y-10
+              gap-x-6
+              place-items-center
+
+              lg:flex
+              lg:w-full
+              lg:items-center
+              lg:justify-between
+              lg:gap-10
+            "
+          >
+            {skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="
+                  flex
+                  min-w-[75px]
+                  flex-shrink-0
+                  flex-col
+                  items-center
+                  justify-center
+                "
+              >
+              
+                <div className="mb-5 text-4xl text-[#feefb8]">
+                  {skill.icon}
+                </div>
+                <p className="whitespace-nowrap text-sm font-semibold text-white sm:text-base">
+                  {skill.name}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-export default Skills;*/}
-
-
-import {FaReact,FaPython,FaGitAlt,FaGithub,FaDocker,FaHtml5,FaCss3Alt,FaChartBar,} from "react-icons/fa";
-import { motion } from "framer-motion";
-import {
-  SiJavascript,
-  SiTailwindcss,
-  SiFlutter,
-  SiDart,
-  SiMysql,
-  SiPostgresql,
-  SiFirebase,
-  SiFigma,
-  SiPostman
- 
-} from "react-icons/si";
-
-const skills = [
-  { icon: <FaReact />, name: "React" },
-  { icon: <SiTailwindcss />, name: "Tailwind CSS" },
-  { icon: <SiJavascript />, name: "JavaScript" },
-  { icon: <FaPython />, name: "Python" },
-  { icon: <SiPostgresql />, name: "PostgreSQL" },
-  { icon: <SiFirebase />, name: "Firebase" },
-  { icon: <SiPostman />, name: "Postman" },
- 
-  { icon: <FaGitAlt />, name: "Git" },
-  { icon: <FaGithub />, name: "GitHub" },
-  { icon: <FaChartBar />, name: "Power BI" },
-  { icon: <SiFigma />, name: "Figma" },
-];
-
-function Skills(){
-  return (
-
-    <motion.section id="skills"
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.1 }}
-    transition={{ duration: 0.6 }} className="py-20 bg-[#f6fafd]">
-
-    <div className="max-w-6xl mx-auto px-8">
-
-        <div className="text-center mb-20">
-
-            
-
-            <h2 className="text-5xl font-bold mt-4 mb-5 text-[#4a7fa7]">
-                My Skills
-            </h2>
-
-            <p className="mt-5 text-[#0a1931]/70 mb-20" >
-                The tools and technologies I use to build applications.
-            </p>
-
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-18 place-items-center">
-
-            {skills.map((skill) => (
-
-                <div
-                    key={skill.name} className="flex flex-col items-center transition duration-300 hover:-translate-y-2"
-                    >
-
-                    <div className="text-5xl text-[#3d5a80] mb-5">
-                        {skill.icon}
-                    </div>
-
-                    <p className="text-md font-semibold text-gray-800">
-                        {skill.name}
-                    </p>
-
-                </div>
-
-            ))}
-
-        </div>
-
-    </div>
-
-</motion.section>
-  );
-}
 export default Skills;
