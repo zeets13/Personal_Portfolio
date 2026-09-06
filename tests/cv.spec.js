@@ -3,9 +3,11 @@ import { test, expect } from '@playwright/test';
 test('TC-011 - CV button is visible', async ({ page }) => {
   await page.goto('/');
 
-  await expect(
-    page.getByRole('link', { name: /download cv/i })
-  ).toBeVisible();
+   const resumeButton = page.getByRole('link', {
+    name: 'Get my resume',
+  });
+
+  await expect(resumeButton).toBeVisible();
 });
 
 test('TC-012 - Cv gets downloaded', async ({ page }) => {
@@ -13,7 +15,7 @@ test('TC-012 - Cv gets downloaded', async ({ page }) => {
 
   const downloadPromise = page.waitForEvent('download');
 
-  await page.getByRole('link', { name: /download cv/i }).click();
+  await page.getByRole('link', { name: 'Get my resume' }).click();
 
   const download = await downloadPromise;
 

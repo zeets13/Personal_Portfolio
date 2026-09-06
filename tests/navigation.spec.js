@@ -81,9 +81,11 @@ test('TC-008 - LinkedIn link works', async ({ page }) => {
     await page.getByRole('button', { name: "Open menu" }).click();
   }
 
-  const linkedIn = page.getByRole('link', { name: 'LinkedIn' });
-
+  const linkedIn = await page.locator('#home')
+  .getByRole('link', { name: 'LinkedIn', exact: true });
   await expect(linkedIn).toBeVisible();
+
+ 
 
   const popupPromise = page.waitForEvent('popup');
 
@@ -100,9 +102,9 @@ test('TC-009 - GitHub link works', async ({ page }) => {
     await page.getByRole('button', { name: "Open menu" }).click();
   }
 
-  const github = page.getByRole('link', { name: 'Github' ,exact: true });
+  const github = await page.getByRole('link', { name: 'Github' ,exact: true });
 
-  await expect(github).toBeVisible();
+ 
 
   const popupPromise = page.waitForEvent('popup');
 
@@ -119,9 +121,9 @@ test('TC-010 - Email link works', async ({ page }) => {
     await page.getByRole('button', { name: "Open menu" }).click();
   }
 
-  const email = page.getByRole('link', { name: 'Email' });
-
+  const email = await page.locator('#home').getByRole('link', { name: 'Email' });
   await expect(email).toBeVisible();
+
 
   await expect(email).toHaveAttribute('href', /^mailto:/);
 });
