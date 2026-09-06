@@ -48,25 +48,24 @@ function Contact() {
       className="bg-[#F2EFE7] py-20"
     >
       <div className="max-w-6xl mx-auto px-8">
-        <div className="rounded-3xl bg-[#432f2e] p-8 lg:p-14">
-          <div className="flex flex-col lg:flex-row lg:items-start 
-          lg:justify-between gap-8 border-b border-[#feefb8]/15 pb-10 mb-10">
-            <div className="flex items-center gap-6">
-              <h2
-                className="text-5xl sm:text-6xl font-black uppercase
-                 tracking-tight text-[#feefb8] leading-none"
-                style={{ fontFamily: "'Arial Black', sans-serif" }}
-              >
-                Contact
-                <br />
-                Me
-              </h2>
-              <div className="hidden sm:block w-[2px] self-stretch bg-[#feefb8]/30" />
-              <p className="hidden sm:block max-w-[160px] text-sm 
-              text-[#feefb8]/70 leading-relaxed">
-                Reach Out To me For Any Queries.
-              </p>
-            </div>
+       <div className="rounded-3xl bg-[#432f2e] p-6 sm:p-8 lg:p-14">
+  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 border-b border-[#feefb8]/15 pb-10 mb-10">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+      <h2
+        className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase
+         tracking-tight text-[#feefb8] leading-none break-words"
+        style={{ fontFamily: "'Arial Black', sans-serif" }}
+      >
+        Contact
+        <br />
+        Me
+      </h2>
+      <div className="hidden sm:block w-[2px] self-stretch bg-[#feefb8]/30" />
+      <p className="max-w-[220px] sm:max-w-[160px] text-sm
+      text-[#feefb8]/70 leading-relaxed">
+        Reach Out To me For Any Queries.
+      </p>
+    </div>
 
             <div className="space-y-4">
               <InfoRow

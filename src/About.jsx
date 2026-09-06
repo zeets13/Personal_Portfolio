@@ -43,19 +43,8 @@ export default function About({ about2 }) {
 
     </div>
 
-    {/* Floating badges */}
-    <div className="absolute -top-5 -right-8 bg-[#feefb8] rounded-full px-8 py-2 shadow-lg">
-      <span className="font-semibold text-[#432f2e] text-md">
-        Cat Mom
-      </span>
-    </div>
-
-    <div className="absolute top-[30%] -left-18 bg-[#feefb8] rounded-full px-8 py-2 shadow-lg">
-      <span className="font-semibold text-[#432f2e] text-md">
-        Bug Hunter
-      </span>
-    </div>
-
+  
+   
    
 
   </div>

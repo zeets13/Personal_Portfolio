@@ -50,7 +50,7 @@ export default function Hero() {
 
           {/* Badge */}
             <span className=" text-sm " >
-            Quality Assurance Engineer | Frontend Developer
+            Aspiring QA Engineer | Frontend Developer
             </span>
          
 
@@ -134,8 +134,6 @@ export default function Hero() {
         </div>
 
 
-        {/* ================= RIGHT SIDE ================= */}
-
         <div
           className="
             relative order-1 mx-auto
@@ -158,8 +156,6 @@ export default function Hero() {
             }}
           />
 
-
-          {/* Code card */}
           <div
             className="
               relative
@@ -171,8 +167,6 @@ export default function Hero() {
               transform: "rotate(-2deg)",
             }}
           >
-
-            {/* Window header */}
             <div className="mb-5 flex items-center gap-1.5">
 
               <span className="h-2.5 w-2.5 rounded-full bg-[#feefb8]/40" />
@@ -186,7 +180,7 @@ export default function Hero() {
             </div>
 
 
-            {/* Code */}
+
             <div className="space-y-2  text-[13px] leading-relaxed">
 
               {CODE_LINES.map((line, index) => (
@@ -205,7 +199,6 @@ export default function Hero() {
             </div>
 
 
-            {/* Test result */}
             <div
               className="
                 mt-6 flex items-center gap-2

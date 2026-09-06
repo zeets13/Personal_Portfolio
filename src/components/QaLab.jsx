@@ -143,47 +143,38 @@ const handleRunTests = async () => {
 
           </div>
 
-          
-          <div className="flex w-full max-w-md border border-[#432f2e] md:w-auto">
+         <div className="grid w-full grid-cols-3 border border-[#432f2e] sm:max-w-md">
+  {/* Tests */}
+  <div className="flex flex-col items-center justify-center border-r border-[#432f2e] px-2 py-4 sm:px-5 sm:py-6">
+    <span className="text-xl sm:text-3xl font-semibold text-[#432f2e]">
+      64
+    </span>
+    <span className="mt-1 text-[9px] sm:text-[10px] font-medium tracking-widest text-slate-500">
+      TESTS
+    </span>
+  </div>
 
-            {/* Tests */}
-            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center 
-             border-r border-[#432f2e] px-5 py-6">
-              <span className="text-3xl font-semibold text-[#432f2e]">
-                64
-              </span>
+  {/* Browsers */}
+  <div className="flex flex-col items-center justify-center border-r border-[#432f2e] px-2 py-4 sm:px-5 sm:py-6">
+    <span className="text-xl sm:text-3xl font-semibold text-[#432f2e]">
+      2
+    </span>
+    <span className="mt-1 text-[9px] sm:text-[10px] font-medium tracking-widest text-slate-500">
+      BROWSERS
+    </span>
+  </div>
 
-              <span className="mt-1 text-[10px] font-medium tracking-widest text-slate-500">
-                TESTS
-              </span>
-            </div>
-
-            {/* Browsers */}
-            <div className="flex min-w-[100px] flex-1 flex-col items-center justify-center 
-            border-r border-[#432f2e] px-5 py-6">
-              <span className="text-3xl font-semibold text-[#432f2e]">
-                2
-              </span>
-
-              <span className="mt-1 text-[10px] font-medium tracking-widest text-slate-500">
-                BROWSERS
-              </span>
-            </div>
-
-            {/* Passing */}
-            <div className="flex min-w-[100px] flex-1 flex-col items-center 
-            border-r border-[#432f2e] justify-center px-5 py-6">
-              <span className="text-3xl font-semibold text-[#432f2e]">
-                100%
-              </span>
-
-              <span className="mt-1 text-[10px] font-medium tracking-widest text-slate-500">
-                PASS
-              </span>
-            </div>
-
-          </div>
-        </div>
+  {/* Passing */}
+  <div className="flex flex-col items-center justify-center px-2 py-4 sm:px-5 sm:py-6">
+    <span className="text-xl sm:text-3xl font-semibold text-[#432f2e]">
+      100%
+    </span>
+    <span className="mt-1 text-[9px] sm:text-[10px] font-medium tracking-widest text-slate-500">
+      PASS
+    </span>
+  </div>
+</div>
+</div>
 
         <div className="grid md:grid-cols-[42%_58%]">
 
