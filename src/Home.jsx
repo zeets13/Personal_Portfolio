@@ -48,10 +48,11 @@ export default function Hero() {
 
         <div className="order-2 text-left lg:order-1">
 
-          {/* Badge */}
+          {/* Badge 
             <span className=" text-sm " >
             Aspiring QA Engineer | Frontend Developer
             </span>
+            */}
          
 
 
